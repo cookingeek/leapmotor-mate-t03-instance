@@ -3,6 +3,40 @@
 All notable changes to LeapMotor Mate are documented here.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## 3.14.22 — 2026-08-28
+
+**Search results carry a total, so any period adds itself up** (discussion [#263](https://github.com/ProtossBlaster/leapmotor-mate/discussions/263), asked by **@joeyoong**).
+
+His electricity is billed 22nd→21st rather than by calendar month, so the month strip's total never
+covered the period he actually pays for. The date filters that select such a period were already
+there on both the Charges and the Trips search — what was missing is the sum: the results listed
+their cards and totalled nothing, so anything other than a calendar month had to be added up by hand.
+
+Both searches now show the period's own total above the results: **sessions, kWh delivered (and the
+battery figure beside it), cost** on Charges; **trips, km, litres on a range-extender, cost** on Trips.
+Same figures and same source as the calendar's month strip, so a searched period and a month can
+never disagree about the same records.
+
+## 3.14.21 — 2026-08-28
+
+**The Overview's range estimate aims at your charge limit** (discussion [#266](https://github.com/ProtossBlaster/leapmotor-mate/discussions/266), asked by **@adoewa**).
+
+The card extrapolated the remaining range to a fixed 100%, which is not the number you plan around
+when you stop the car at 80 or 90. It now reads the charge limit the car reports — the SoC it will
+actually stop at — and says "Estimated at 90%" with the figure for that target. A car that hasn't
+reported a limit still shows 100%, exactly as before.
+
+**Statistics shows the fuel side of a range-extender month** (beta [#35](https://github.com/ProtossBlaster/MateBetaTesterOnly/issues/35) follow-up, asked by **@michapr**).
+
+On a range-extender the kWh figures describe only the driving that ran on the battery, so the litres
+that moved the car the rest of the time appeared nowhere on this page. Each year and month now also
+shows **litres and L/100 km**, and every month gets a **fuel trend** chart beside the efficiency one —
+in the slot a range-extender left empty, since it has no regen figure to plot. Days the generator
+never ran leave a gap rather than a zero.
+
+The two consumptions keep their own words because they have their own kilometres: L/100 km is over
+**all** the kilometres (the car's own basis), while kWh/100 km is over the kilometres getEC covers.
+
 ## 3.14.20 — 2026-08-27
 
 **The Icelandic króna, and charging prices are no longer capped at 9.99** (discussion [#265](https://github.com/ProtossBlaster/leapmotor-mate/discussions/265), asked by **@alloutnow**).
